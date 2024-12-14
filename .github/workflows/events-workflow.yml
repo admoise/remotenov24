@@ -1,8 +1,22 @@
+name: Event based workflow execution
+run-name: checking workflow reuse - DEMO
+
 on:
-  workflow_call:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  fork:
+    branches:
+      - main
 
 jobs:
-  reuse_job1:
+  reuse_job:
+    uses: ./.github/workflows/reuseme.yml
+
+  main_job:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "MY REUSABLE JOB 1 - EXECUTED"
+      - run: echo "TRIGGERED the main branch workflow - event based"
