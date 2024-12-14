@@ -1,16 +1,8 @@
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  fork:
-    branches:
-      - main
+  workflow_call:
 
 jobs:
-  main_job:
+  reuse_job1:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "TRIGGERED the main branch workflow - event based"
+      - run: echo "MY REUSABLE JOB 1 - EXECUTED"
